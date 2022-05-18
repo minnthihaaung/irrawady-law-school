@@ -128,7 +128,7 @@ const Books = () => {
                   alignItems: "center",
                 }}
               >
-                <LibraryBooksIcon />
+                <LibraryBooksIcon sx={{ m: 1 }} />
 
                 <Typography
                   variant="subtitle1"

@@ -20,7 +20,7 @@ const Footer = () => {
             fontFamily: "Monospace",
           }}
         >
-          Copyright to me.
+          &copy; Copyright to Mr. Mario
         </Box>
       </Box>
     </footer>

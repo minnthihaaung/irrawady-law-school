@@ -1,6 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import { useTheme, useMediaQuery } from "@mui/material";
+import { useTheme, useMediaQuery, Divider } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -15,13 +15,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
 import { matchPath, useLocation, Link } from "react-router-dom";
-import logo from "../images/logo.png";
+import logo from "../images/ils-logo.png";
 
 const PAGES = [
   { text: "Home", route: "/" },
   { text: "Courses", route: "/courses" },
   { text: "Books", route: "/books" },
-  { text: "Login", route: "/login" },
+  { text: "Login", route: "/" },
 ];
 
 const Navbar = () => {
@@ -66,16 +66,17 @@ const Navbar = () => {
     >
       <Toolbar>
         {/* App icon */}
-        <img src={logo} alt="logo" className="logo" />
-
+        <IconButton disableRipple component={Link} to="/">
+          <img src={logo} alt="logo" className="logo" />
+        </IconButton>
         {/* App name */}
         <Typography
           variant="h5"
-          component="a"
-          href="/"
+          component={Link}
+          to="/"
           sx={{
             ml: 3,
-            fontWeight: 100,
+            fontWeight: 500,
             letterSpacing: ".3rem",
             textDecoration: "none",
             color: "inherit",
@@ -130,11 +131,16 @@ const Navbar = () => {
               >
                 <List>
                   {PAGES.map((item, index) => (
-                    <ListItem key={index} component={Link} to={item.route}>
-                      <ListItemButton>
-                        <ListItemText primary={item.text}></ListItemText>
-                      </ListItemButton>
-                    </ListItem>
+                    <>
+                      {item.text === "Login" ? (
+                        <Divider variant="middle" />
+                      ) : null}
+                      <ListItem key={index} component={Link} to={item.route}>
+                        <ListItemButton>
+                          <ListItemText primary={item.text}></ListItemText>
+                        </ListItemButton>
+                      </ListItem>
+                    </>
                   ))}
                 </List>
               </Box>
